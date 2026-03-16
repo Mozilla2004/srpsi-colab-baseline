@@ -272,8 +272,7 @@ def main():
     parser.add_argument("--config", type=str, default="config/burgers.yaml",
                         help="Path to config file")
     parser.add_argument("--model", type=str, default="srpsi_engine",
-    choices=["srpsi_engine"],
-                                 "srpsi_real", "srpsi_no_r", "conv_baseline", "transformer_rel_pe"],
+                        choices=["srpsi_engine"],
                         help="Model type")
     parser.add_argument("--epochs", type=int, default=None,
                         help="Number of epochs (overrides config)")
