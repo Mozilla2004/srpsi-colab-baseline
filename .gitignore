@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Data
+data/*.npy
+data/*.npz
+*.npy
+*.npz
+
+# Outputs
+outputs/
+runs/
+logs/
+*.log
+
+# Colab
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints
+
+# TensorBoard
+events.out.tfevents.*
