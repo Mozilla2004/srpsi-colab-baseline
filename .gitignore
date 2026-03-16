@@ -41,3 +41,4 @@ Thumbs.db
 events.out.tfevents.*
 # .gitignore 中允许这个 notebook
 !SRPSI_v1.0_Training.ipynb
+!SRPSI_v1.0_Training_Fixed.ipynb
