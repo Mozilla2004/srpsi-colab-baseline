@@ -39,7 +39,7 @@ from src.utils import (
     save_checkpoint, AverageMeter, count_parameters
 )
 from src.datasets import create_dataloaders
-from src.models.srpsi_engine_tiny import SRPsiEngineTiny
+from src.models import (
     BaselineMLP, BaselineTransformer, SRPsiEngineTiny,
     SRPsiEngineReal, SRPsiEngineNoR, ConvBaseline, TransformerRelPE
 )
@@ -90,6 +90,7 @@ def create_model(model_type: str, cfg: dict, device: torch.device) -> nn.Module:
         )
 
     # Ablation study models
+    elif model_type == 'srpsi_real':
         model = SRPsiEngineReal(
             tin=tin,
             nx=nx,
@@ -100,6 +101,7 @@ def create_model(model_type: str, cfg: dict, device: torch.device) -> nn.Module:
             tout=tout
         )
 
+    elif model_type == 'srpsi_no_r':
         model = SRPsiEngineNoR(
             tin=tin,
             nx=nx,
@@ -110,6 +112,7 @@ def create_model(model_type: str, cfg: dict, device: torch.device) -> nn.Module:
             tout=tout
         )
 
+    elif model_type == 'conv_baseline':
         model = ConvBaseline(
             tin=tin,
             nx=nx,
@@ -119,6 +122,7 @@ def create_model(model_type: str, cfg: dict, device: torch.device) -> nn.Module:
             tout=tout
         )
 
+    elif model_type == 'transformer_rel_pe':
         model = TransformerRelPE(
             tin=tin,
             nx=nx,
@@ -272,7 +276,7 @@ def main():
     parser.add_argument("--config", type=str, default="config/burgers.yaml",
                         help="Path to config file")
     parser.add_argument("--model", type=str, default="srpsi_engine",
-    choices=["srpsi_engine"],
+                        choices=["baseline_mlp", "baseline_transformer", "srpsi_engine", 
                                  "srpsi_real", "srpsi_no_r", "conv_baseline", "transformer_rel_pe"],
                         help="Model type")
     parser.add_argument("--epochs", type=int, default=None,
